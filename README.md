@@ -16,56 +16,66 @@
 
 
 
+# Library Platform Database
 
+This project uses the **MySQL** Database Management System (DBMS) to manage the data for the library platform. The SQL file for importing the database is included in this repository.
 
-# Banco de Dados da Plataforma de Biblioteca
+## Database Structure
 
-Este projeto utiliza o Sistema de Gerenciamento de Banco de Dados (SGBD) **MySQL** para gerenciar os dados da plataforma de biblioteca. O arquivo SQL para importação do banco de dados está incluído neste repositório.
+The database was created based on the project requirements and technical considerations to ensure an efficient and scalable structure. Below is a description of the tables and their fields.
 
-## Estrutura do Banco de Dados
+### 1. Authors Table (TB_AUTHORS)
+This table stores information about the book authors.
 
-O banco de dados foi criado seguindo as orientações da atividade, levando em consideração elementos técnicos essenciais para a criação de um banco de dados eficiente. Abaixo estão descritas as tabelas e seus campos.
-
-### 1. Tabela de Autores (TB_AUTHORS)
-Esta tabela armazena as informações sobre os autores dos livros.
-
-| Campo        | Tipo            | Detalhes                        |
+| Field        | Type            | Details                         |
 |--------------|-----------------|---------------------------------|
-| `ID_AUTHOR`  | INT             | Primary Key, Auto Increment     |
-| `NM_AUTHOR`  | VARCHAR(100)     | Nome do autor, Not Null         |
+| `ID_AUTHOR`  | INT             | Primary Key, Auto Increment      |
+| `NM_AUTHOR`  | VARCHAR(100)     | Author's name, Not Null          |
 
-### 2. Tabela de Livros (TB_BOOKS)
-Esta tabela armazena as informações dos livros cadastrados na plataforma.
+### 2. Books Table (TB_BOOKS)
+This table stores information about the books registered on the platform.
 
-| Campo                 | Tipo            | Detalhes                        |
+| Field                 | Type            | Details                         |
 |-----------------------|-----------------|---------------------------------|
-| `ID_BOOK`             | INT             | Primary Key, Auto Increment     |
-| `NM_TITLE`            | VARCHAR(100)    | Título do livro, Not Null       |
-| `ID_AUTHOR`           | INT             | Foreign Key (referencia `ID_AUTHOR` de `TB_AUTHORS`), Not Null |
-| `DT_PUBLICATION_YEAR` | INTEGER         | Ano de publicação, Not Null     |
-| `NUM_STOCK`           | INTEGER         | Número de exemplares em estoque, Not Null |
+| `ID_BOOK`             | INT             | Primary Key, Auto Increment      |
+| `NM_TITLE`            | VARCHAR(100)    | Book title, Not Null             |
+| `ID_AUTHOR`           | INT             | Foreign Key (references `ID_AUTHOR` from `TB_AUTHORS`), Not Null |
+| `DT_PUBLICATION_YEAR` | INTEGER         | Publication year, Not Null       |
+| `NUM_STOCK`           | INTEGER         | Number of copies in stock, Not Null |
 
-### 3. Tabela de Gêneros (TB_GENDER)
-Esta tabela armazena os diferentes gêneros (ou categorias) dos livros.
+### 3. Genres Table (TB_GENDER)
+This table stores the different genres or categories of books.
 
-| Campo        | Tipo            | Detalhes                        |
+| Field        | Type            | Details                         |
 |--------------|-----------------|---------------------------------|
-| `ID_GENDER`  | INT             | Primary Key, Auto Increment     |
-| `NM_GENDER`  | VARCHAR(100)     | Nome do gênero, Not Null        |
+| `ID_GENDER`  | INT             | Primary Key, Auto Increment      |
+| `NM_GENDER`  | VARCHAR(100)     | Genre name, Not Null             |
 
-### 4. Tabela de Relacionamento Livros-Gêneros (TB_RELATIONSHIP_TB_BOOKS_TB_GENDER)
-Esta tabela cria um relacionamento de muitos-para-muitos entre os livros e os gêneros.
+### 4. Books-Genres Relationship Table (TB_RELATIONSHIP_TB_BOOKS_TB_GENDER)
+This table establishes a **many-to-many** relationship between books and genres. 
 
-| Campo            | Tipo            | Detalhes                        |
+A book can belong to multiple genres (e.g., a book could be both a **mystery** and a **thriller**), and a genre can have many books associated with it (e.g., there can be many books in the **science fiction** genre). To model this, an intermediate or join table (`TB_RELATIONSHIP_TB_BOOKS_TB_GENDER`) is created to link the books and genres, ensuring each book can have multiple genres and each genre can contain multiple books.
+
+| Field            | Type            | Details                         |
 |------------------|-----------------|---------------------------------|
-| `ID_RELATIONSHIP`| INT             | Primary Key, Auto Increment     |
-| `ID_BOOK`        | INT             | Foreign Key (referencia `ID_BOOK` de `TB_BOOKS`), Not Null |
-| `ID_GENDER`      | INT             | Foreign Key (referencia `ID_GENDER` de `TB_GENDER`), Not Null |
+| `ID_RELATIONSHIP`| INT             | Primary Key, Auto Increment      |
+| `ID_BOOK`        | INT             | Foreign Key (references `ID_BOOK` from `TB_BOOKS`), Not Null |
+| `ID_GENDER`      | INT             | Foreign Key (references `ID_GENDER` from `TB_GENDER`), Not Null |
 
-## Instruções de Importação
+## Many-to-Many Relationship Explanation
 
-1. Clone este repositório para sua máquina local.
-2. Utilize o arquivo SQL incluído para importar o banco de dados no MySQL. O comando abaixo pode ser utilizado para a importação:
+In the real world, a book can fall under multiple genres, such as **fantasy**, **adventure**, and **romance**. At the same time, a genre can have many different books. This **many-to-many relationship** cannot be directly modeled with just two tables (books and genres). Instead, an intermediate relationship table (`TB_RELATIONSHIP_TB_BOOKS_TB_GENDER`) is required to manage this connection.
+
+In this design:
+- Each book can be linked to multiple genres through the `TB_RELATIONSHIP_TB_BOOKS_TB_GENDER` table.
+- Each genre can be linked to multiple books through the same relationship table.
+
+The use of a many-to-many relationship ensures the flexibility of the database in handling cases where books and genres overlap, which is common in library systems.
+
+## Import Instructions
+
+1. Clone this repository to your local machine.
+2. Use the included SQL file to import the database into MySQL. The following command can be used for import:
 
 ```bash
-mysql -u [usuario] -p [nome_do_banco] < arquivo_importacao.sql
+mysql -u [user] -p [database_name] < import_file.sql
