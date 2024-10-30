@@ -16,6 +16,7 @@
 
 
 
+
 # Library Platform Database
 
 This project uses the **MySQL** Database Management System (DBMS) to manage the data for the library platform. The SQL file for importing the database is included in this repository.
@@ -23,6 +24,9 @@ This project uses the **MySQL** Database Management System (DBMS) to manage the 
 ## Database Structure
 
 The database was created based on the project requirements and technical considerations to ensure an efficient and scalable structure. Below is a description of the tables and their fields.
+
+![image](https://github.com/user-attachments/assets/1bf8602d-0403-4f4c-8970-5fb2f7038c2c)
+
 
 ### 1. Authors Table (TB_AUTHORS)
 This table stores information about the book authors.
@@ -62,12 +66,3 @@ A book can belong to multiple genres (e.g., a book could be both a **mystery** a
 | `ID_BOOK`        | INT             | Foreign Key (references `ID_BOOK` from `TB_BOOKS`), Not Null |
 | `ID_GENDER`      | INT             | Foreign Key (references `ID_GENDER` from `TB_GENDER`), Not Null |
 
-## Many-to-Many Relationship Explanation
-
-In the real world, a book can fall under multiple genres, such as **fantasy**, **adventure**, and **romance**. At the same time, a genre can have many different books. This **many-to-many relationship** cannot be directly modeled with just two tables (books and genres). Instead, an intermediate relationship table (`TB_RELATIONSHIP_TB_BOOKS_TB_GENDER`) is required to manage this connection.
-
-In this design:
-- Each book can be linked to multiple genres through the `TB_RELATIONSHIP_TB_BOOKS_TB_GENDER` table.
-- Each genre can be linked to multiple books through the same relationship table.
-
-The use of a many-to-many relationship ensures the flexibility of the database in handling cases where books and genres overlap, which is common in library systems.
