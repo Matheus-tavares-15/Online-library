@@ -71,11 +71,3 @@ In this design:
 - Each genre can be linked to multiple books through the same relationship table.
 
 The use of a many-to-many relationship ensures the flexibility of the database in handling cases where books and genres overlap, which is common in library systems.
-
-## Import Instructions
-
-1. Clone this repository to your local machine.
-2. Use the included SQL file to import the database into MySQL. The following command can be used for import:
-
-```bash
-mysql -u [user] -p [database_name] < import_file.sql
