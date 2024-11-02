@@ -170,7 +170,13 @@ Once you have started both the server and the web application, you can access th
 
 ### Video Tutorial
 
-https://www.youtube.com/watch?v=c5XraXITo30
+<div style="border: 1px solid #ddd; border-radius: 5px; padding: 10px; text-align: center; margin: 20px 0;">
+    <h4>Demonstração do Projeto</h4>
+    <a href="https://youtu.be/c5XraXITo30" target="_blank">
+        <img src="https://img.youtube.com/vi/c5XraXITo30/0.jpg" alt="Project Demonstration" style="width: 100%; max-width: 400px; border-radius: 5px;">
+    </a>
+    <p><a href="https://youtu.be/c5XraXITo30" target="_blank">Watch Now</a></p>
+</div>
 
 
 For a demonstration of the project, watch the tutorial video here: [Project Demonstration](https://youtu.be/c5XraXITo30)
