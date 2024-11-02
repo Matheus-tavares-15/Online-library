@@ -170,5 +170,7 @@ Once you have started both the server and the web application, you can access th
 
 ### Video Tutorial
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/c5XraXITo30?si=y3tnXL--o8L49hr4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 For a demonstration of the project, watch the tutorial video here: [Project Demonstration](https://youtu.be/c5XraXITo30)
 
