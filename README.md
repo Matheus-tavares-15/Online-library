@@ -168,4 +168,7 @@ To run the project, you will need to download both the server and the web applic
 
 Once you have started both the server and the web application, you can access the Online Library in your browser using the address that will be displayed in the terminal (usually something like `http://localhost:3000`).
 
+### Video Tutorial
+
+For a demonstration of the project, watch the tutorial video here: [Project Demonstration](https://youtu.be/c5XraXITo30)
 
