@@ -69,7 +69,8 @@ This project uses the **MySQL** Database Management System (DBMS) to manage the 
 
 The database was created based on the project requirements and technical considerations to ensure an efficient and scalable structure. Below is a description of the tables and their fields.
 
-![image](https://github.com/user-attachments/assets/1bf8602d-0403-4f4c-8970-5fb2f7038c2c)
+![220f3c0e-868b-420b-a806-cbc98d68714c](https://github.com/user-attachments/assets/25099419-37f3-46c5-befa-961161487ce3)
+
 
 
 ### 1. Authors Table (TB_AUTHORS)
